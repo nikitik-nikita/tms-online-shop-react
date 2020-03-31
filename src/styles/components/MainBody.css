@@ -1,7 +1,3 @@
 .MainBody {
     padding-top: 20px;
 }
-
-.MainBody:last-child {
-    padding-bottom: 15px;
-}
