@@ -23,8 +23,11 @@ module.exports = {
     'react',
   ],
   rules: {
-    "react/prefer-stateless-function": [0, { "ignorePureComponents": 'Component' }]
-    // "react/jsx-uses-react": "error",
-    // "react/jsx-uses-vars": "error",
+    "react/prefer-stateless-function": [0],
+    "import/prefer-default-export": [0],
+    "react/no-danger": [0],
+    "react/jsx-props-no-spreading": [0],
+    "react/forbid-prop-types": [0],
+    "react/destructuring-assignment": [0],
   },
 };

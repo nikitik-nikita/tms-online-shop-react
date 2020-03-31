@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 import Logo from './Logo';
 import Search from './Search';
@@ -8,16 +9,21 @@ import '../styles/components/Header.css';
 import '../styles/components/Search.css';
 import '../styles/components/Basket.css';
 
-export default class Header extends Component {
-  render() {
-    return (
-      <div className="Header">
-        <div className="container Header__container">
-          <Logo />
-          <Search />
-          <Basket />
-        </div>
-      </div>
-    );
-  }
-}
+const Header = ({ basket }) => (
+  <div className="Header">
+    <div className="container Header__container">
+      <Logo />
+      <Search />
+      <Basket count={basket.count} amount={basket.amount} />
+    </div>
+  </div>
+);
+
+export default Header;
+
+Header.propTypes = {
+  basket: PropTypes.shape({
+    count: PropTypes.number.isRequired,
+    amount: PropTypes.number.isRequired,
+  }).isRequired,
+};
