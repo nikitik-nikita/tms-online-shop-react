@@ -1,26 +1,28 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
+import { Route, Switch } from 'react-router-dom';
 
+// Components
+import Products from 'containers/Products';
+import OnlyProduct from 'containers/OnlyProduct';
 import MainBodyHeader from './MainBodyHeader';
-import Products from './Products';
 
-import '../styles/components/MainBody.css';
+// Styles
+import 'styles/components/MainBody.css';
 
-import { products } from '../constants/defaultData';
+const MainBody = () => (
+  <div className="container MainBody">
+    <MainBodyHeader />
+    <Switch>
+      <Route path="/" exact>
+        <Products />
+      </Route>
+      <Route path="/product/:id">
+        <OnlyProduct />
+      </Route>
+    </Switch>
+  </div>
+);
 
+MainBody.displayName = 'MainBody';
 
-export default class MainBody extends Component {
-  render() {
-    return (
-      <div className="container MainBody">
-        <MainBodyHeader />
-        <Products products={products} {...this.props} />
-      </div>
-    );
-  }
-}
-
-MainBody.propTypes = {
-  addToBasket: PropTypes.func.isRequired,
-  removeFromBasket: PropTypes.func.isRequired,
-};
+export default MainBody;

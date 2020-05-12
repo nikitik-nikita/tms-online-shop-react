@@ -1,3 +1,7 @@
+.basket:hover {
+    cursor: pointer;
+}
+
 .basket__circle--counter {
     font-size: 9px;
     font-weight: 400;
@@ -14,7 +18,7 @@
 
 .amount {
     font-size: 9px;
-    text-transform: lowercase;
+    /*text-transform: lowercase;*/
     color: #c1c1c2;
 }
 .amount__sum {

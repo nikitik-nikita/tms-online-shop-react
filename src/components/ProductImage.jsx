@@ -1,7 +1,9 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
-import '../styles/components/ProductImage.css';
+import { string } from 'prop-types';
+
+// Styles
+import 'styles/components/ProductImage.css';
 
 const ProductImage = (props) => (
   <div className="product__img--wrap">
@@ -9,9 +11,11 @@ const ProductImage = (props) => (
   </div>
 );
 
-export default ProductImage;
+ProductImage.displayName = 'ProductImage';
 
 ProductImage.propTypes = {
-  alt: PropTypes.string.isRequired,
-  src: PropTypes.string.isRequired,
+  alt: string,
+  src: string,
 };
+
+export default ProductImage;

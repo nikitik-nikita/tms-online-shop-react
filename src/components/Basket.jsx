@@ -1,23 +1,37 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
-const Basket = ({ count, amount }) => (
-  <div>
-    <p>
-      Basket
-      <span className="basket__circle--counter">{count}</span>
-    </p>
-    <p className="amount">
-      amount:
-      <span className="amount__sum">{amount}</span>
-      $
-    </p>
-  </div>
+import { number, func, string } from 'prop-types';
+
+const Basket = ({
+  count, amount, onClick, currency,
+}) => (
+  <>
+    <div className="basket" onClick={onClick} tabIndex={0} onKeyPress={onClick} role="menuitem">
+      <p>
+        Basket
+        <span className="basket__circle--counter">
+          {count}
+        </span>
+      </p>
+      <p className="amount">
+        amount:
+        <span className="amount__sum">
+          {(amount).toLocaleString('en-En')}
+          {' '}
+          {currency}
+        </span>
+      </p>
+    </div>
+  </>
 );
 
-export default Basket;
+Basket.displayName = 'Basket';
 
 Basket.propTypes = {
-  count: PropTypes.number.isRequired,
-  amount: PropTypes.number.isRequired,
+  count: number.isRequired,
+  amount: number.isRequired,
+  onClick: func.isRequired,
+  currency: string.isRequired,
 };
+
+export default Basket;

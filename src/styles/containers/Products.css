@@ -6,10 +6,10 @@
 }
 
 .Products__table--information{
-    margin-bottom: 25px;
-
     border-radius: 4px;
     background-color: #ffffff;
+
+    margin-bottom: 20px;
 }
 
 .product__wrap {
@@ -34,6 +34,7 @@
 }
 
 .product__text--description {
+    font-weight: 400;
     font-size: 12px;
 }
 
