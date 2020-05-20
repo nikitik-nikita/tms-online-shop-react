@@ -38,5 +38,6 @@ module.exports = {
     "no-shadow": 0,
     "react/require-default-props": 0,
     "no-unused-expressions": [0, { "allowTernary": true }],
+    "jsx-a11y/anchor-is-valid": 0,
   },
 };

@@ -14,13 +14,14 @@ import classNames from 'classnames';
 // Actions
 import { addToBasket, removeFromBasket } from 'actions';
 
-// Styles
-import 'styles/components/Button.css';
+// Styles (hooks)
+import useStyles from 'styles/components/Button';
 
 const Button = ({
   product,
   ...props
 }) => {
+  const classes = useStyles();
   const [active, setActiveData] = useState({ status: false });
 
   useEffect(() => {
@@ -42,8 +43,8 @@ const Button = ({
   // }, [active.status]);
 
   const payload = { productId: product.id, priceValue: product.price.value, priceCurrency: product.price.currency };
-  const handleBasket = (event) => {
-    event.preventDefault();
+  const handleBasket = () => {
+    // event.preventDefault();
     setActiveData((prevState) => ({ status: !prevState.status }));
     active.status ? props.removeFromBasket(payload) : props.addToBasket(payload);
   };
@@ -53,7 +54,7 @@ const Button = ({
   return (
     <>
       <div
-        className={classNames('add-to-basket', { _active: active.status })}
+        className={classNames(classes.add_to_basket, { [classes.active]: active.status })}
         onClick={handleBasket}
         tabIndex={0}
         onKeyPress={handleBasket}

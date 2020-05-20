@@ -10,49 +10,56 @@ import { connect } from 'react-redux';
 import ProductImage from 'components/ProductImage';
 import Button from 'components/Button';
 
-// Styles
-import 'styles/containers/Products.css';
+// helpers
+import numberView from 'helpers/numberView';
 
-const Products = ({ products }) => (
-  <div className="Products__table">
-    {products.map((product) => (
-      <div className="Products__table--information" key={product.id}>
-        <div className="wrap product__wrap">
-          <div className="product__cell">
-            <Link to={`/product/${product.id}`}>
-              <ProductImage
-                src={product.imageLink}
-                alt={product.title}
-                product={product}
-              />
-            </Link>
-            <div className="product__text">
+// Styles (hooks)
+import useStyles from 'styles/containers/Products';
+
+const Products = ({ products }) => {
+  const classes = useStyles();
+
+  return (
+    <div className={classes.Root}>
+      {products.map((product) => (
+        <div className={classes.Products__table__information} key={product.id}>
+          <div className={`wrap ${classes.product__wrap}`}>
+            <div className={classes.product__cell}>
               <Link to={`/product/${product.id}`}>
-                <p className="product__text--title">{product.title}</p>
+                <ProductImage
+                  src={product.imageLink}
+                  alt={product.title}
+                  product={product}
+                />
               </Link>
-              <p
-                className="product__text--description"
-                dangerouslySetInnerHTML={{ __html: product.description }}
-              />
+              <div className={classes.product__text}>
+                <Link to={`/product/${product.id}`}>
+                  <p className={classes.product__text__title}>{product.title}</p>
+                </Link>
+                <p
+                  className={classes.product__text__description}
+                  dangerouslySetInnerHTML={{ __html: product.description }}
+                />
+              </div>
+            </div>
+            <div className={classes.product__cost}>
+              <p className={classes.product__cost__info}>
+                {(product.price.currency)}
+                {' '}
+                {numberView(product.price.value)}
+              </p>
+              <Button product={product} />
             </div>
           </div>
-          <div className="product__cost">
-            <p className="product__cost--info">
-              {(product.price.currency)}
-              {' '}
-              {(product.price.value).toLocaleString('en-En')}
-            </p>
-            <Button product={product} />
-          </div>
         </div>
-      </div>
-    ))}
-  </div>
-);
+      ))}
+    </div>
+  );
+};
 
 
 const mapStateToProps = (state) => ({
-  products: state.products,
+  products: state.products.current,
 });
 
 Products.displayName = 'Products';

@@ -7,4 +7,8 @@ export const basketState = {
 
 export const loadState = false;
 
-export const productsState = [];
+export const productsState = {
+  origin: [],
+  current: [],
+  sortDirection: '',
+};

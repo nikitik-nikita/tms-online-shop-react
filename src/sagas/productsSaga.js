@@ -13,10 +13,9 @@ import { productUrl, rateUrl } from 'constants/urls';
 
 import { serverGet } from 'helpers/requests';
 
-
 export function* getDataSaga() {
   try {
-    const currentProducts = yield select((state) => state.products);
+    const currentProducts = yield select((state) => state.products.current);
 
     if (!currentProducts.length) {
       yield put(startLoader());

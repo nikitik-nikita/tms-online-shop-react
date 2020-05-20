@@ -6,6 +6,9 @@ import { bool, func } from 'prop-types';
 // HOCs
 import { connect } from 'react-redux';
 
+// Styles (hooks)
+import useRootStyles from 'styles';
+
 // Actions
 import { getData } from 'actions';
 
@@ -15,6 +18,7 @@ import MainBody from 'components/MainBody';
 import Header from './Header';
 
 const App = ({ load, ...props }) => {
+  useRootStyles();
   useEffect(() => {
     props.getData();
   }, []);

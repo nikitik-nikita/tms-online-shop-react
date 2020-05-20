@@ -11,6 +11,9 @@ import {
 // HOCs
 import { connect } from 'react-redux';
 
+// Styles (hooks)
+import useStyles from 'styles/containers/Header';
+
 // Components
 import Logo from 'components/Logo';
 import Search from 'components/Search';
@@ -18,30 +21,26 @@ import Basket from 'components/Basket';
 import Modal from 'components/Modal';
 import OnlyProduct from './OnlyProduct';
 
-// Styles
-import 'styles/containers/Header.css';
-import 'styles/components/Search.css';
-import 'styles/components/Basket.css';
-
 const Header = ({ basket, products }) => {
+  const classes = useStyles();
   const [modalActive, setModalActive] = useState(false);
+
+  const { productIds } = basket;
+  const basketProducts = products.filter((product) => productIds.includes(product.id));
+  // console.log(basketProducts);
+  // console.log(modalActive);
 
   const openModal = () => {
     setModalActive(true);
   };
 
   const closeModal = () => {
-    setModalActive(false);
+    if (!basketProducts.length) { setModalActive(false); }
   };
 
-  const { productIds } = basket;
-  const basketProducts = products.filter((product) => productIds.includes(product.id));
-  console.log(basketProducts);
-  console.log(modalActive);
-
   return (
-    <div className="Header">
-      <div className="container Header__container">
+    <div className={classes.Root}>
+      <div className={`container ${classes.Header__container}`}>
         <Logo />
         <Search />
         <Basket
@@ -67,7 +66,7 @@ const Header = ({ basket, products }) => {
 
 const mapStateToProps = (state) => ({
   basket: state.basket,
-  products: state.products,
+  products: state.products.current,
 });
 
 Header.displayName = 'Header';

@@ -5,18 +5,22 @@ import { func, any } from 'prop-types';
 // HOCs
 import withDisplay from 'HOCs/withDisplay';
 
-// Styles
-import 'styles/components/Modal.css';
+// Styles (hooks)
+import useStyles from 'styles/components/Modal';
 
-const Modal = ({ children, onClose }) => (
-  <>
-    <div onClick={onClose} tabIndex={0} onKeyPress={onClose} role="menuitem" className="Modal-background">
-      <div className="Modal-root">
-        {children}
+const Modal = ({ children, onClose }) => {
+  const classes = useStyles();
+
+  return (
+    <>
+      <div onClick={onClose} tabIndex={0} onKeyPress={onClose} role="menuitem" className={classes.Modal__background}>
+        <div className={classes.Modal__root}>
+          {children}
+        </div>
       </div>
-    </div>
-  </>
-);
+    </>
+  );
+};
 
 Modal.displayName = 'Modal';
 

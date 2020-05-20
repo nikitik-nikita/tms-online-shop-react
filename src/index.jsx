@@ -6,13 +6,9 @@ import { BrowserRouter } from 'react-router-dom';
 import { PersistGate } from 'redux-persist/integration/react';
 import { store, persistor } from 'store';
 
-// Styles
-import 'styles/index.css';
-
 // Components
 import { Provider } from 'react-redux';
 import App from 'containers/App';
-
 
 ReactDOM.render((
   <Provider store={store}>

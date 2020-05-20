@@ -2,14 +2,18 @@ import React from 'react';
 
 import { string } from 'prop-types';
 
-// Styles
-import 'styles/components/ProductImage.css';
+// Styles (hooks)
+import useStyles from 'styles/components/ProductImage';
 
-const ProductImage = (props) => (
-  <div className="product__img--wrap">
-    <img className="product__img" alt={props.alt} src={props.src} />
-  </div>
-);
+const ProductImage = (props) => {
+  const classes = useStyles();
+
+  return (
+    <div className={classes.product__img__wrap}>
+      <img className={classes.product__img} alt={props.alt} src={props.src} />
+    </div>
+  );
+};
 
 ProductImage.displayName = 'ProductImage';
 

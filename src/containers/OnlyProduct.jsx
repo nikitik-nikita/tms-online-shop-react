@@ -6,14 +6,18 @@ import { array, object } from 'prop-types';
 // HOCs
 import { connect } from 'react-redux';
 
-// Styles
-import 'styles/containers/Products.css';
+// helpers
+import numberView from 'helpers/numberView';
+
+// Styles (hooks)
+import useStyles from 'styles/containers/Products';
 
 // Components
 import ProductImage from 'components/ProductImage';
 import Button from 'components/Button';
 
 const OnlyProduct = ({ products, ...props }) => {
+  const classes = useStyles();
   const [product = {}, setProduct] = useState({ price: {} });
 
   const params = useParams();
@@ -33,24 +37,24 @@ const OnlyProduct = ({ products, ...props }) => {
 
   const { value: priceValue = 0, currency: priceCurrency } = product.price;
   return (
-    <div className="Products__table">
-      <div className="Products__table--information">
-        <div className="wrap product__wrap">
-          <div className="product__cell">
+    <div className={classes.Root}>
+      <div className={classes.Products__table__information}>
+        <div className={`wrap ${classes.product__wrap}`}>
+          <div className={classes.product__cell}>
             <ProductImage src={product.imageLink} alt={product.title} product={product} />
-            <div className="product__text">
-              <p className="product__text--title">{product.title}</p>
+            <div className={classes.product__text}>
+              <p className={classes.product__text__title}>{product.title}</p>
               <p
-                className="product__text--description"
+                className={classes.product__text__description}
                 dangerouslySetInnerHTML={{ __html: product.description }}
               />
             </div>
           </div>
-          <div className="product__cost">
-            <p className="product__cost--info">
+          <div className={classes.product__cost}>
+            <p className={classes.product__cost__info}>
               {(priceCurrency)}
               {' '}
-              {(priceValue).toLocaleString('en-En')}
+              {numberView(priceValue)}
             </p>
             <Button product={product} {...props} />
           </div>
@@ -61,7 +65,7 @@ const OnlyProduct = ({ products, ...props }) => {
 };
 
 const mapStateToProps = (state) => ({
-  products: state.products,
+  products: state.products.current,
 });
 
 OnlyProduct.displayName = 'OnlyProduct';
