@@ -19,7 +19,8 @@ import Logo from 'components/Logo';
 import Search from 'components/Search';
 import Basket from 'components/Basket';
 import Modal from 'components/Modal';
-import OnlyProduct from './OnlyProduct';
+import OnlyProduct from 'containers/OnlyProduct';
+import ThemeSwitcher from 'components/ThemeSwitcher';
 
 const Header = ({ basket, products }) => {
   const classes = useStyles();
@@ -43,6 +44,7 @@ const Header = ({ basket, products }) => {
       <div className={`container ${classes.Header__container}`}>
         <Logo />
         <Search />
+        <ThemeSwitcher />
         <Basket
           onClick={openModal}
           count={basket.count}

@@ -8,6 +8,10 @@ import {
 // Constants
 import { productsState } from 'constants/defaultState';
 
+// helpers
+import sortDesc from 'helpers/sortDesc';
+import sortAsc from 'helpers/sortAsc';
+import sortState from 'helpers/sortState';
 
 export default {
   products: handleActions({
@@ -16,7 +20,7 @@ export default {
       const newState = [...state.current];
 
       newState.sortDirection = 'Desc';
-      newState.sort((a, b) => a.price.value - b.price.value);
+      sortDesc(newState);
 
       return { ...state, current: newState, sortDirection: newState.sortDirection };
     },
@@ -24,14 +28,16 @@ export default {
       const newState = [...state.current];
 
       newState.sortDirection = 'Asc';
-      newState.sort((a, b) => b.price.value - a.price.value);
+      sortAsc(newState);
 
       return { ...state, current: newState, sortDirection: newState.sortDirection };
     },
     [searchProducts]: (state, { payload = '' }) => {
       const reg = new RegExp(payload.searchString, 'i');
+      const newState = state.origin.filter((product) => reg.test(product.title));
+      sortState(newState, state.sortDirection);
 
-      return { ...state, current: state.origin.filter((product) => reg.test(product.title)) };
+      return { ...state, current: newState };
     },
   }, productsState),
 };

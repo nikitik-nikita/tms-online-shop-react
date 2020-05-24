@@ -34,9 +34,6 @@ const MainBodyHeader = (props) => {
         <a
           href="#"
           onClick={handleClick}
-          tabIndex={0}
-          onKeyPress={handleClick}
-          role="button"
         >
           {sortDirection}
         </a>

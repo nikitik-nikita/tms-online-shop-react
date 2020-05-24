@@ -1,17 +1,17 @@
 import { createUseStyles } from 'react-jss';
 
-const headerStyles = {
+const headerStyles = (theme) => ({
   Root: {
     width: '100%',
-    background: '#252525',
+    background: theme.palette.background.header,
   },
   Header__container: {
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
     height: '60px',
-    color: '#f5f5f7',
+    color: theme.palette.text.header,
   },
-};
+});
 
 export default createUseStyles(headerStyles, { name: 'Header', index: 300 });

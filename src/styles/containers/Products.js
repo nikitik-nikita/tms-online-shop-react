@@ -1,14 +1,13 @@
 import { createUseStyles } from 'react-jss';
 
-const productsStyles = {
+const productsStyles = (theme) => ({
   Root: {
     display: 'flex',
     flexDirection: 'column',
-    marginTop: '25px',
   },
   Products__table__information: {
     borderRadius: '4px',
-    backgroundColor: '#ffffff',
+    backgroundColor: theme.palette.background.paper,
     marginBottom: '20px',
   },
   product__wrap: {
@@ -30,8 +29,8 @@ const productsStyles = {
   },
   product__text__description: {
     font: {
-      weight: 400,
-      size: '12px',
+      weight: theme.typography.fontWeightRegular,
+      size: theme.typography.fontSizeNormal,
     },
   },
   product__cost: {
@@ -42,11 +41,11 @@ const productsStyles = {
     display: 'flex',
     justifyContent: 'flex-end',
     font: {
-      weight: 600,
-      size: '16px',
+      weight: theme.typography.fontWeightMedium,
+      size: theme.typography.fontSizeGlobal,
     },
     marginBottom: '5px',
   },
-};
+});
 
 export default createUseStyles(productsStyles, { name: 'Products', index: 301 });

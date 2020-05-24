@@ -14,7 +14,7 @@ import useStyles from 'styles/containers/Products';
 
 // Components
 import ProductImage from 'components/ProductImage';
-import Button from 'components/Button';
+import Button from 'components/BasketButton';
 
 const OnlyProduct = ({ products, ...props }) => {
   const classes = useStyles();

@@ -1,14 +1,16 @@
 import React from 'react';
-
-import { connect } from 'react-redux';
-import { searchProducts } from 'actions';
 import { array, func } from 'prop-types';
+import { connect } from 'react-redux';
+
+// Actions
+import { searchProducts } from 'actions';
 
 const Search = ({ searchProducts, products }) => {
   const handleInput = (event) => {
     event.preventDefault();
 
     searchProducts({ products, searchString: event.target.value });
+    console.log(products);
   };
 
   return (

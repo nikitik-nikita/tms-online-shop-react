@@ -8,7 +8,8 @@ import { connect } from 'react-redux';
 
 // Components
 import ProductImage from 'components/ProductImage';
-import Button from 'components/Button';
+import BasketButton from 'components/BasketButton';
+import SearchError from 'components/SearchError';
 
 // helpers
 import numberView from 'helpers/numberView';
@@ -16,9 +17,14 @@ import numberView from 'helpers/numberView';
 // Styles (hooks)
 import useStyles from 'styles/containers/Products';
 
-const Products = ({ products }) => {
+const Products = ({ products = [] }) => {
   const classes = useStyles();
 
+  if (!products.length) {
+    return (
+      <SearchError />
+    );
+  }
   return (
     <div className={classes.Root}>
       {products.map((product) => (
@@ -48,7 +54,7 @@ const Products = ({ products }) => {
                 {' '}
                 {numberView(product.price.value)}
               </p>
-              <Button product={product} />
+              <BasketButton product={product} />
             </div>
           </div>
         </div>

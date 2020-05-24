@@ -1,6 +1,6 @@
 import { createUseStyles } from 'react-jss';
 
-const basketStyles = {
+const basketStyles = (theme) => ({
   basket: {
     '&:hover': {
       cursor: 'pointer',
@@ -9,26 +9,26 @@ const basketStyles = {
 
   basket__circle__counter: {
     font: {
-      size: '9px',
-      weight: 400,
+      size: theme.typography.fontSizeSmall,
+      weight: theme.typography.fontWeightRegular,
     },
     display: 'inline-flex',
     alignItems: 'center',
     justifyContent: 'center',
     minWidth: '15px',
     height: '15px',
-    color: '#ffffff',
-    background: '#ff8b38',
+    color: theme.palette.text.primary,
+    background: theme.palette.background.elements,
     transform: 'translateY(-10px)',
     borderRadius: '50%',
   },
   amount: {
-    fontSize: '9px',
-    color: '#c1c1c2',
+    fontSize: theme.typography.fontSizeSmall,
+    color: theme.palette.text.header,
   },
   amount__sum: {
-    fontSize: '9px',
+    fontSize: theme.typography.fontSizeSmall,
   },
-};
+});
 
 export default createUseStyles(basketStyles, { name: 'Basket', index: 302 });

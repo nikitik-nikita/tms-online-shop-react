@@ -1,8 +1,8 @@
 import { createUseStyles } from 'react-jss';
 
-const ModalStyles = {
+const ModalStyles = (theme) => ({
   Modal__background: {
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    backgroundColor: theme.palette.background.modal,
     position: 'fixed',
     top: 0,
     left: 0,
@@ -11,15 +11,18 @@ const ModalStyles = {
     zIndex: 1,
   },
   Modal__root: {
-    backgroundColor: '#ffffff',
+    width: '770px',
+    textAlign: 'center',
+    backgroundColor: theme.palette.background.paper,
     padding: '20px',
     position: 'absolute',
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
     zIndex: 1,
-    color: '#000000',
+    borderRadius: '4px',
+    color: theme.palette.text.main,
   },
-};
+});
 
 export default createUseStyles(ModalStyles, { name: 'Modal', index: 307 });

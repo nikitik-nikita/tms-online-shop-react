@@ -8,13 +8,13 @@ import { store, persistor } from 'store';
 
 // Components
 import { Provider } from 'react-redux';
-import App from 'containers/App';
+import Wrapper from 'containers/Wrapper';
 
 ReactDOM.render((
   <Provider store={store}>
     <PersistGate loading={null} persistor={persistor}>
       <BrowserRouter>
-        <App />
+        <Wrapper />
       </BrowserRouter>
     </PersistGate>
   </Provider>),

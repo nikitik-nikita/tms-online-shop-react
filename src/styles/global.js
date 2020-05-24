@@ -1,25 +1,25 @@
-const globalStyles = {
+const globalStyles = (theme) => ({
   '*': {
     margin: 0,
-    fontFamily: 'Open Sans, sans-serif',
-    fontWeight: 600,
-    fontSize: '16px',
+    fontFamily: theme.typography.fontFamily,
+    fontWeight: theme.typography.fontWeightMedium,
+    fontSize: theme.typography.fontSizeGlobal,
     boxSizing: 'border-box',
   },
   body: {
     overflow: 'auto',
-    background: '#d8d8d8',
+    background: theme.palette.background.default,
   },
   a: {
-    color: '#252525',
+    color: theme.palette.text.main,
     textDecoration: 'none',
   },
   input: {
-    width: '400px',
+    width: theme.typography.fontWeightRegular,
     height: '25px',
     borderStyle: 'none',
     borderRadius: '3px',
-    fontSize: '12px',
+    fontSize: theme.typography.fontSizeNormal,
     paddingLeft: '5px',
   },
   '.container': {
@@ -32,10 +32,10 @@ const globalStyles = {
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
-    fontSize: '16px',
-    fontWeight: 600,
+    fontSize: theme.typography.fontSizeGlobal,
+    fontWeight: theme.typography.fontWeightMedium,
     padding: '15px',
   },
-};
+});
 
 export default globalStyles;

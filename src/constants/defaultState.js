@@ -12,3 +12,8 @@ export const productsState = {
   current: [],
   sortDirection: '',
 };
+
+export const appState = {
+  lightTheme: true,
+  checked: false,
+};

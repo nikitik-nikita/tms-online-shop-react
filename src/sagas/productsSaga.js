@@ -2,6 +2,7 @@ import {
   put, call, all, takeLatest, select, delay,
 } from 'redux-saga/effects';
 
+// Actions
 import {
   startLoader,
   addProducts,
@@ -9,9 +10,12 @@ import {
   getData,
 } from 'actions';
 
+// Constants
 import { productUrl, rateUrl } from 'constants/urls';
 
+// helpers
 import { serverGet } from 'helpers/requests';
+import sortDesc from 'helpers/sortDesc';
 
 export function* getDataSaga() {
   try {
@@ -33,7 +37,7 @@ export function* getDataSaga() {
         return product;
       });
 
-      yield put(addProducts(updatedProducts));
+      yield put(addProducts(sortDesc(updatedProducts)));
       yield put(endLoader());
     }
   } catch (err) {
