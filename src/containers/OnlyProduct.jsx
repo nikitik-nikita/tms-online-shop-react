@@ -14,7 +14,7 @@ import useStyles from 'styles/containers/Products';
 
 // Components
 import ProductImage from 'components/ProductImage';
-import Button from 'components/BasketButton';
+import BasketButton from 'components/BasketButton';
 
 const OnlyProduct = ({ products, ...props }) => {
   const classes = useStyles();
@@ -56,7 +56,7 @@ const OnlyProduct = ({ products, ...props }) => {
               {' '}
               {numberView(priceValue)}
             </p>
-            <Button product={product} {...props} />
+            <BasketButton product={product} {...props} />
           </div>
         </div>
       </div>

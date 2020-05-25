@@ -36,7 +36,7 @@ const Header = ({ basket, products }) => {
   };
 
   const closeModal = () => {
-    if (!basketProducts.length) { setModalActive(false); }
+    setModalActive(false);
   };
 
   return (
@@ -51,7 +51,7 @@ const Header = ({ basket, products }) => {
           amount={basket.amount}
           currency={basket.currency}
         />
-        <Modal display={modalActive} onClose={closeModal}>
+        <Modal display={modalActive} onClick={closeModal}>
           {basketProducts.length
             ? basketProducts.map((product) => (
               <OnlyProduct
@@ -59,7 +59,7 @@ const Header = ({ basket, products }) => {
                 product={product}
               />
             ))
-            : (<div>Basket is empty</div>)}
+            : (<div style={{ fontSize: '30px' }}>Basket is empty &#128524;</div>)}
         </Modal>
       </div>
     </div>

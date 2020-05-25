@@ -15,7 +15,7 @@ const Basket = ({
 
   return (
     <>
-      <div className={classes.basket} onClick={onClick} tabIndex={0} onKeyPress={onClick} role="menuitem">
+      <div className={classes.basket} onClick={onClick}>
         <p>
           Basket
           <span className={classes.basket__circle__counter}>

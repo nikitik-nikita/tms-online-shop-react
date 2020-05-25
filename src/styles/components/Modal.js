@@ -23,6 +23,19 @@ const ModalStyles = (theme) => ({
     borderRadius: '4px',
     color: theme.palette.text.main,
   },
+  Modal__close: {
+    fontSize: theme.typography.fontSizeNormal,
+    fontWeight: theme.typography.fontWeightMedium,
+    cursor: 'pointer',
+    position: 'absolute',
+    right: '10px',
+    top: '3px',
+    color: theme.palette.action.inActive,
+
+    '&:hover': {
+      color: theme.palette.action.hoverInActive,
+    },
+  },
 });
 
 export default createUseStyles(ModalStyles, { name: 'Modal', index: 307 });
