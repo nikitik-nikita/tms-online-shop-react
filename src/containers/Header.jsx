@@ -28,8 +28,8 @@ const Header = ({ basket, products }) => {
 
   const { productIds } = basket;
   const basketProducts = products.filter((product) => productIds.includes(product.id));
-  // console.log(basketProducts);
-  // console.log(modalActive);
+  console.log(basketProducts);
+
 
   const openModal = () => {
     setModalActive(true);

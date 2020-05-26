@@ -28,7 +28,7 @@ const BasketButton = ({
     } else {
       setActiveData({ status: false });
     }
-  }, [props.basket]);
+  }, [props.basket, product]);
 
   const payload = { productId: product.id, priceValue: product.price.value, priceCurrency: product.price.currency };
   const handleBasket = (event) => {
