@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { compose } from 'redux';
 import { useParams } from 'react-router';
 import { array, object } from 'prop-types';
@@ -18,22 +18,9 @@ import BasketButton from 'components/BasketButton';
 
 const OnlyProduct = ({ products, ...props }) => {
   const classes = useStyles();
-  const [product = {}, setProduct] = useState({ price: {} });
-
   const params = useParams();
 
-  useEffect(() => {
-    const { id } = params;
-
-    if (products.length && id) {
-      const stateProduct = products.find((item) => item.id === id);
-
-      setProduct(stateProduct);
-    } else if (props.product) {
-      setProduct(props.product);
-    }
-  }, []);
-
+  const product = products.find((item) => item.id === params.id) || { price: {} };
 
   const { value: priceValue = 0, currency: priceCurrency } = product.price;
   return (

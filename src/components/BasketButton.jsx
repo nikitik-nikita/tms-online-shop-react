@@ -33,7 +33,7 @@ const BasketButton = ({
   const payload = { productId: product.id, priceValue: product.price.value, priceCurrency: product.price.currency };
   const handleBasket = (event) => {
     event.preventDefault();
-    setActiveData((prevState) => ({ status: !prevState.status }));
+    setActiveData((prevState) => ({ status: !prevState.status, load: !prevState.load }));
     active.status ? props.removeFromBasket(payload) : props.addToBasket(payload);
   };
 
