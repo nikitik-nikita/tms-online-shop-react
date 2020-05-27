@@ -26,13 +26,14 @@ const OnlyProduct = ({ products, ...props }) => {
     const { id } = params;
 
     if (products.length && id) {
-      const product = products.find((item) => item.id === id);
+      const stateProduct = products.find((item) => item.id === id);
 
-      setProduct(product);
+      setProduct(stateProduct);
     } else if (props.product) {
       setProduct(props.product);
     }
   }, []);
+
 
   const { value: priceValue = 0, currency: priceCurrency } = product.price;
   return (
