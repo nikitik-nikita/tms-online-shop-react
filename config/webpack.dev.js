@@ -6,6 +6,9 @@ const common = require('./webpack.common');
 module.exports = merge.smart(common, {
   mode: 'development',
   devtool: 'inline-source-map',
+  output: {
+    publicPath: '/',
+  },
   resolve: {
     alias: {
       'react-dom': '@hot-loader/react-dom',
@@ -16,6 +19,7 @@ module.exports = merge.smart(common, {
     port: 8000,
     hot: true,
     open: true, // or flag in package.json
+    historyApiFallback: true,
     proxy: {
       '/api': 'http://localhost:3000',
     },

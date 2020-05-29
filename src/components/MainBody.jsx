@@ -1,20 +1,25 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { Route, Switch } from 'react-router-dom';
 
+// Components
+import Products from 'containers/Products';
+import OnlyProduct from 'containers/OnlyProduct';
 import MainBodyHeader from './MainBodyHeader';
-import Products from './Products';
 
-import '../styles/components/MainBody.css';
+const MainBody = () => (
+  <div className="container">
+    <MainBodyHeader />
+    <Switch>
+      <Route path="/" exact>
+        <Products />
+      </Route>
+      <Route path="/product/:id">
+        <OnlyProduct />
+      </Route>
+    </Switch>
+  </div>
+);
 
-export default class MainBody extends Component {
-  render() {
-    return (
-      <div className="container MainBody">
-        <MainBodyHeader />
-        <Products />
-        <Products />
-        <Products />
-        <Products />
-      </div>
-    );
-  }
-}
+MainBody.displayName = 'MainBody';
+
+export default MainBody;

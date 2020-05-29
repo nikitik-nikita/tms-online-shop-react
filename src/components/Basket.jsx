@@ -1,19 +1,47 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-export default class Basket extends Component {
-  render() {
-    return (
-      <div>
+import { number, func, string } from 'prop-types';
+
+// helpers
+import numberView from 'helpers/numberView';
+
+// Styles (hooks)
+import useStyles from 'styles/components/Basket';
+
+const Basket = ({
+  count, amount, onClick, currency,
+}) => {
+  const classes = useStyles();
+
+  return (
+    <>
+      <div className={classes.basket} onClick={onClick}>
         <p>
           Basket
-          <span className="basket__circle--counter">0</span>
+          <span className={classes.basket__circle__counter}>
+            {count}
+          </span>
         </p>
-        <p className="amount">
+        <p className={classes.amount}>
           amount:
-          <span className="amount__sum">0</span>
-          $
+          <span className={classes.amount__sum}>
+            {numberView(amount)}
+            {' '}
+            {currency}
+          </span>
         </p>
       </div>
-    );
-  }
-}
+    </>
+  );
+};
+
+Basket.displayName = 'Basket';
+
+Basket.propTypes = {
+  count: number.isRequired,
+  amount: number.isRequired,
+  onClick: func.isRequired,
+  currency: string.isRequired,
+};
+
+export default Basket;
